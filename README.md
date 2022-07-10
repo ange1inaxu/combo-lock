@@ -1,4 +1,5 @@
-[demonstration video](https://youtu.be/b1zzTXdVgA4)
+# Overview
+[demo video](https://youtu.be/b1zzTXdVgA4)
 
 Because we are only turning our Arduino clockwise or counterclockwise on a level table, we only needed the z-axis angular velocity reading from the gyroscope. Setting LOOP_PERIOD to 10 ms, we know that our gyroscope reading occurs every 10 ms, which we can use to integrate our angular velocity to get our angular position: `angle = angle + 0.001*LOOP_PERIOD*velocity;` In addition, we made sure that the velocity reading was greater than 1 or less than -1 to make sure that the tilt was intentional, rather than noise in the gyroscope reading. Since the displacement could be negative if tilted Clockwise or greater than 360 if turned several times Counterclockwise, we normalized our angle, so that it'd always be between 0 and 360. Since we have 10 digits, a change in digit value would correspond with a change in 36 degrees, so using some arithmetic, we're able convert the angular position to a digit. This is done in our helper function get_digit().
 
